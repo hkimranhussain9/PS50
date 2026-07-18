@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promo Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="mainFrame" src="about:blank"></iframe>
+
+    <script>
+        // গোপন ফাইল লোড করুন
+        var script = document.createElement('script');
+        script.src = 'secret.js';
+        document.head.appendChild(script);
+
+        // লোড হলে iframe-এ লিংক সেট করুন
+        script.onload = function() {
+            if (typeof SECRET_URL !== 'undefined') {
+                document.getElementById('mainFrame').src = SECRET_URL;
+            }
+        };
+
+        // প্রোটেকশন
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'i' || e.key === 'I' || e.key === 'j' || e.key === 'J')) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.key === 'i' || e.key === 'I')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        console.clear();
+        console.log('%c🔒 Protected', 'font-size:20px;color:#10b981;');
+
+        console.log = function() {};
+        console.warn = function() {};
+        console.error = function() {};
+        console.info = function() {};
+
+        setInterval(function() {
+            debugger;
+        }, 3000);
+
+        if (window.history && window.history.pushState) {
+            window.history.pushState(null, '', window.location.href);
+            window.addEventListener('popstate', function() {
+                window.history.pushState(null, '', window.location.href);
+            });
+        }
+    </script>
+</body>
+</html>
