@@ -1,3 +1,10 @@
+# secret.js লোড হতে দেয়, কিন্তু সরাসরি অ্যাক্সেস ব্লক করে
+[[headers]]
+  for = "/secret.js"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# সরাসরি অ্যাক্সেসকে 404-তে পাঠায়
 [[redirects]]
   from = "/secret.js"
   to = "/"
