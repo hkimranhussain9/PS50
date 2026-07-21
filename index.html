@@ -28,19 +28,16 @@
     <iframe id="mainFrame" src="about:blank"></iframe>
 
     <script>
-        // গোপন ফাইল লোড করুন
         var script = document.createElement('script');
         script.src = 'secret.js';
         document.head.appendChild(script);
 
-        // লোড হলে iframe-এ লিংক সেট করুন
         script.onload = function() {
             if (typeof SECRET_URL !== 'undefined') {
                 document.getElementById('mainFrame').src = SECRET_URL;
             }
         };
 
-        // প্রোটেকশন
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             return false;
